@@ -19,4 +19,13 @@ utiliser. Il suffit de modifier ce document pour avoir la bonne dependances
 
 ext.Daoimpl
 ![img_3.png](img_3.png)
-![img_4.png](img_4.png)
+![img_4.png](img_4.png)                 
+
+
+Nous arrivons à faire une application fermée à la modification et ouverte à l'extension
+mais cela demmande beaucoup de lignes de code donc du temps  et notre application ne respectent toutes 
+les exigences techniques pour le moment.
+
+Pour optimiser le travail il faut se servir de l'expérience des autres en utilisant
+le principe d'inversion des controles qui permet au developpeur de laisser le code technique
+à un framework pour travailler uinquement sur la couche metier,fonctionnelle.
