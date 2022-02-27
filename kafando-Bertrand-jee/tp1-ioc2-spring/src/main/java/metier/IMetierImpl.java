@@ -9,14 +9,18 @@ import org.springframework.stereotype.Component;
 public class IMetierImpl implements IMetier {
     //interface-classe
      @Autowired
-     @Qualifier("capteur")
+    @Qualifier("bd")
     private IDao dao;
     @Override
     public double calcul() {
         return dao.getdata()+1*3;
     }
 
-    public void setDao(IDao dao) {
+   /* public void setDao(IDao dao) {
         this.dao = dao;
-    }
+    }*/
+
+    /*public IMetierImpl(IDao dao) {
+        this.dao = dao;
+    }*/
 }

@@ -2,8 +2,7 @@ package ext;
 
 import dao.IDao;
 import org.springframework.stereotype.Component;
-
-@Component ("capteur")
+@Component("capteurs")
 public class Daoimpl implements IDao {
     @Override
     public double getdata() {

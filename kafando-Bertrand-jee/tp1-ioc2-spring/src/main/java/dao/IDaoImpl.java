@@ -2,7 +2,7 @@ package dao;
 
 import org.springframework.stereotype.Component;
 
-@Component ("bd")
+@Component("bd")
 public class IDaoImpl implements IDao {
     @Override
     public double getdata() {
@@ -10,4 +10,6 @@ public class IDaoImpl implements IDao {
         System.out.println("de la db");
         return Math.random()*50;
     }
+
+
 }
