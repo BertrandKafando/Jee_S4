@@ -29,6 +29,8 @@ Pour les dependances on peut utiliser un constructeur ou un setter.
 
 
 
+
+
                                   **Injection des dependances par Annotation @**
 
     la méthode consiste à utiliser des annotations pour specifier  au framework quel classe utiliser
@@ -51,10 +53,13 @@ Lorque qu'il y'a plusieurs implementation ,il faut donner un nom à chaque compo
 Dans ce cas on doit utiliser @qualifer("nom du compenet à instancier") pour choisir 
 version bd
 ![img_6.png](img_6.png)
+
 version capteurs:
 ![img_8.png](img_8.png)
+
 IMetierImplementation
 ![img_9.png](img_9.png)
+
 Resultat:
 ![img_10.png](img_10.png)
 
@@ -62,9 +67,13 @@ Resultat:
 Cas 2: Injection des dependances par constructeur 
 on garde @component 
 ![img_20.png](img_20.png)
+
 on declare le constructeur
 ![img_21.png](img_21.png)
+
 Lorsque y'a plusieurs composants , le contructeur choisit le premier qu'il trouve
+
+
 
 
 
