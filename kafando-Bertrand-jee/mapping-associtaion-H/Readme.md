@@ -1,4 +1,6 @@
                 **Mapping des associations et de l'heritage JPA SPRING DATA
+          
+          Exemple Medecin Patient-Consultaion et rendezvous
 
 
 
