@@ -1,5 +1,6 @@
 package ma.enset.mappingassocitaionh.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,5 +20,6 @@ public class Patient {
     private boolean malade;
 
     @OneToMany(mappedBy = "patient" , fetch = FetchType.LAZY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Collection<RendezVous>rendezVous;
 }

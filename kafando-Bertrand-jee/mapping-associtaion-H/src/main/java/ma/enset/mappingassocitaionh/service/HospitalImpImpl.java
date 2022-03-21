@@ -12,6 +12,7 @@ import ma.enset.mappingassocitaionh.repositories.RendezVousRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -49,5 +50,10 @@ public class HospitalImpImpl implements HospitalImp {
     public RendezVous saveRendezVous(RendezVous rendezVous) {
        rendezVous.setId(UUID.randomUUID().toString());
         return rendezVousRepository.save(rendezVous);
+    }
+
+    @Override
+    public List<Patient> getPatienst() {
+        return patientRepository.findAll();
     }
 }
