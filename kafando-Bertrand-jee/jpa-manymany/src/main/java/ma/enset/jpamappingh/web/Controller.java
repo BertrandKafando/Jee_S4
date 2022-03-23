@@ -10,11 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-
+@AllArgsConstructor
 public class Controller {
-    @Autowired
     private UserService userService;
-
     @GetMapping("/users/{username}")
     public User usertest(@PathVariable String username){
         User user=userService.findUserByUsername(username);
