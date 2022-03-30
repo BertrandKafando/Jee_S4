@@ -74,9 +74,9 @@ Vue de patients
     =>2-Pour utiliser le layout, on ajoute les namespaces et on écrit le code de la page dans un div ayant l'attribut 
     layout:fragment="fragment conncerné"
 ![img_12.png](img_12.png)
-
+![img_24.png](img_24.png)
     =>on va recuperer les données du model et les afficher dans un tableau ici grace à boostrap
-    =>liste de produits
+    =>liste de patients
 ![img_14.png](img_14.png)
 
 ![img_16.png](img_16.png)
