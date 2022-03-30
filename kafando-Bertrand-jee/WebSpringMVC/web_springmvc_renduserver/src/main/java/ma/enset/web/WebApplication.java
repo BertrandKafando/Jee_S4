@@ -16,7 +16,7 @@ public class WebApplication {
     public static void main(String[] args) {
         SpringApplication.run(WebApplication.class, args);
     }
-@Bean
+//@Bean
     CommandLineRunner commandLineRunner(PatientRepository patientRepository){
         return args -> {
             Stream.of("Bertrand","Hassan","yasmine","cecile").forEach(p->{
