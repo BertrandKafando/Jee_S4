@@ -126,9 +126,76 @@ Test:
                     
                                                   **Operation Post**
 
+    
+    Creation de de lien pour l'ajout dans le menu
+![img_25.png](img_25.png)
+
+Controller
+
+    on cree un nouveau patient que l'on stocke dans le model et on retourne la vue
+![img_26.png](img_26.png)
+    
+    =>Dans la vue on cree un formulaire contenant un label un input et le span pour le message d'erreur
+![img_27.png](img_27.png)
+
+    => la method est de type post et appel l'action save du controller
+![img_28.png](img_28.png)
+
+Validation du formulaire:
+    
+    1- il faut ajouter la dependance spring-boot-starter-validation qui offre des annotations pour la validation
+    2-annotations
+    @NotEmpty -->no vide
+    @DecimalMin("")-->infereir à ..
+    @Size(min=, max=)-->taille de string
+![img_29.png](img_29.png)
+
+    3-En plus dans le controller , on ajoute un argument BindingResult  dans la methode save.il utilisé pour le test 
+![img_31.png](img_31.png)
+    
+    4-ajouter span avec th:errors dans le template
+![img_32.png](img_32.png)
+
+Test:
+Non valide
+
+![img_33.png](img_33.png)
+
+valide
+
+![img_34.png](img_34.png)
+
+![img_35.png](img_35.png)
+
+
+
+
                                                     **Operation Update**
+Affichage
+    
+    ajoute d'un lien edit pour chaqur peoduit
+![img_36.png](img_36.png)
 
+    edit appel l'action edit du controller qui recupère le patient à editer 
+    et renvoie la vue edit.hmtl
+    j'envoie le keyword et la page pour retouver ma page courante
+![img_38.png](img_38.png)
+    
+    save appel /save du controller qui modifie et retourne la page courante 
+![img_39.png](img_39.png)
 
+Test:
 
+![img_40.png](img_40.png)
+    
+    changer le nom
+![img_41.png](img_41.png)
+
+    resultat:
+![img_42.png](img_42.png)
+
+                                    
+
+                                     Partie II:Spring Security
 
 

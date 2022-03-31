@@ -39,6 +39,10 @@
                             <a onclick="return confirm('(Etes vous sur?)')" class="btn btn-danger"
                                th:href="@{delete(id=${p.id}, keyword=${keyword},page=${curentPage})}">del</a>
                         </td>
+                        <td >
+                            <a  class="btn btn-success"
+                               th:href="@{edit(id=${p.id}, keyword=${keyword},page=${curentPage})}">Edit</a>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
