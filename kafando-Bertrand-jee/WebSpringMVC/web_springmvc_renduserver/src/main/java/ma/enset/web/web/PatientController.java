@@ -45,7 +45,7 @@ public class PatientController {
 
     @GetMapping("/")
     public String hom(){
-        return "redirect:/index";
+        return "home";
     }
 
     @GetMapping("/patients")

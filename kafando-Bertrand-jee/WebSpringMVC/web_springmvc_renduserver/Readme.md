@@ -1,7 +1,12 @@
                         **Rapport JEE  Spring MVC avec rendu coté serveur avec Thymeleaf**
                                 operations CRUD et Springsecurity
-                                    
+
+//
+
                                         Partie I:CRUD
+
+//
+
     **Creation d'entité**
 Entité Patient
 ![img.png](img.png)
@@ -23,6 +28,7 @@ Test de save() et find...()
 
                                      **Partie Web**
 
+//
 
     il faut une classe Controller qui contiendra les différentes actions souhaitées.Ces actions sont appélées par le
     servlet lors d'une requetes http. 
@@ -196,6 +202,118 @@ Test:
 
                                     
 
-                                     Partie II:Spring Security
+                                     **Partie II:Spring Security**
+
+//
+
+    Pour utiliser Spring security il faut ajouter la depandances
+![img_43.png](img_43.png)
+
+    Quand on demarre l'application, l'authentification est demmandé.Spring demmare un filtre avant la servlet.
+    
+    Creons notre propre configuration; il faut creer une classe qui herite WebSecurityConfigurerAdapter. Au dessus de la 
+    on ajoute @Configuration pour specifier que c'est un fichier de configuration, @EnableWebSecurity pour dire à spring
+    d'activer la securité web. 
+![img_44.png](img_44.png)
+
+//
+
+            **Authentification avec Spring Security**
+
+    Pour l'authentification il y'a tois choix pour la gestion des utilisateurs du login:in memory, utiliser une base 
+    de données de users ou utiliser un annuaire de l'entreprise
+//
+
+    Cas 1: In memory
+//
+
+    =>il faut redefinir la fonction configure avec l'argument de type AuthentificationManagerBuilder . avec ce parametre 
+    on definit nos users avec leur roles.
+    Le mot de passe dans la base est encodé; pour cela il faut indiquer un algorithme de codage pour encoder le mot de 
+    passe à la declaration ou utilise << {noop}>> avant mot de passe.
+    Ici, je vais utiliser BCrypt
+    =>on redfinit la methode config avec l'argument HttpSecurity qui permet de definir le formulaire et gére les droits d'accès
+![img_46.png](img_46.png)
+    
+    Afficher l'utilisateur;
+    Pour utiliser spring security avec thymeleaf il ajouter une dependance
+![img_47.png](img_47.png)
+
+    Ensuite il faut ajouter un namespace dans le fichier html,
+![img_50.png](img_50.png)
+    
+    on peut on maintenant afficher le nom.
+![img_49.png](img_49.png)
+
+                        Droits d'accès 
+//
+
+        Etape:1:Contextualisation -Pour afficher les les fonctionnalités disponible pour les admin on va utilise sec:authorize..
+        Ici on prend l'exemple de delete et edit
+![img_51.png](img_51.png)
+
+Test:
+
+    on se connecte avec un user admin
+![img_52.png](img_52.png)
+
+    on se connecte avec user1 qui a le role user seulement
+    edit et delete n'apparaissent
+
+![img_53.png](img_53.png)
+
+        Etape 2: l'étape 1 permet de gérer l'affichage mais un user peut toujours supprimer en tapant l'url de suppression
+    c'est l'escalation.
+    Pour rejoudre cela il faut interdire ces requètes aux autres à part les admin.avec   http.authorizeRequests().antMatchers 
+    on gère les liens d'accès.
+![img_54.png](img_54.png)
+
+Test:
+    
+    lorqu'un user essaie d'acceder à un lien admin.on retourne une error 403 .ce qui veut qu'on n'a pas le droit
+![img_55.png](img_55.png)
+
+    Personnalisons cette page. on créer notre propre page (403.html), vue + action du controller . et dans le fichier 
+    de configuration on gère l'exception en appelant cette page
+![img_56.png](img_56.png)
+
+    SecurrityContoller
+![img_57.png](img_57.png)
+
+    page 403.html
+![img_58.png](img_58.png)
+
+Test:
+
+    si on essaye d'acceder à la page du formulaire
+![img_59.png](img_59.png)
+
+Page sans authentification
+    
+    Créons une page home vide.Pour faire la page sans authentification
+    il faut utiliser "permitAll();" de htttp.authorizeRequests
+![img_60.png](img_60.png)
+    
+    resultat:
+![img_61.png](img_61.png)
 
 
+
+//
+
+    Cas 2: Les users sont dans la bd
+
+//
+
+![img_62.png](img_62.png)
+
+    Dans le fichier de configuration on utilise jdbcauthentification  avec
+    dataSource(dataSource)=> on definie la source de données
+    .usersByUsernameQuery => on fait la requetes pour recuperer le user
+    .authoritiesByUsernameQuery=>on recupère les roles
+    .rolePrefix=>
+    .passwordEncoder(passwordEncoder)=>on precise l'algorithme d'encodage
+![img_63.png](img_63.png)
+
+    resultat:
+![img_64.png](img_64.png)
