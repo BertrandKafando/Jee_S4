@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .withUser("user2").password("{noop}1234").roles("USER");
 
         */
-
+/*
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
                 //recup user
@@ -43,6 +43,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(passwordEncoder);
 
 
+
+ */
+
+
+
     }
 
     @Override
@@ -52,7 +57,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
        http.authorizeRequests().antMatchers("/delete/**","/edit/**",
                "/save/**","/formPatients/**").hasRole("ADMIN");
        http.authorizeRequests().antMatchers("/index/**").hasRole("USER");
-
+       http.authorizeRequests().antMatchers("webjars/**").permitAll();
+       http.authorizeRequests().anyRequest().authenticated();
        http.exceptionHandling().accessDeniedPage("/403");
 
     }

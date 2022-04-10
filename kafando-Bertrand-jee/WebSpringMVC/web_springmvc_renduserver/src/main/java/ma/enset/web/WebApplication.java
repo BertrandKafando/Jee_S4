@@ -2,6 +2,8 @@ package ma.enset.web;
 
 import ma.enset.web.entities.Patient;
 import ma.enset.web.repositories.PatientRepository;
+import ma.enset.web.sec.repositories.AppRoleRepository;
+import ma.enset.web.sec.repositories.AppUserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -28,6 +30,13 @@ public class WebApplication {
             patientRepository.findAll().forEach(p->{
                 System.out.println(p.getName());
             });
+
+        };
+
+    }
+    @Bean
+    CommandLineRunner saisieUsers(AppUserRepository appUserRepository, AppRoleRepository appRoleRepository){
+        return args -> {
 
         };
     }

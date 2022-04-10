@@ -9,22 +9,22 @@
 
     **Creation d'entité**
 Entité Patient
-![img.png](img.png)
+![img.png](images/img.png)
 
     **Repository**
-![img_1.png](img_1.png)
+![img_1.png](images/img_1.png)
 
     **Test de l'application**
     association d'une base de données mysql
 fichier application.properties
 
-![img_2.png](img_2.png)
+![img_2.png](images/img_2.png)
 
 Test de save() et find...()
 
-![img_4.png](img_4.png)
+![img_4.png](images/img_4.png)
 
-![img_3.png](img_3.png)
+![img_3.png](images/img_3.png)
 
                                      **Partie Web**
 
@@ -42,18 +42,18 @@ Test de save() et find...()
 
 PatientController
 
-![img_5.png](img_5.png)
+![img_5.png](images/img_5.png)
 
                         **Vue**
     Avant de passer au actions et leur vue créons une page layout qui contient les éléments communs des pages 
 
 Ajout du dependances thymeleaf layout dialect
 
-![img_7.png](img_7.png)
+![img_7.png](images/img_7.png)
 
 Creation de fichier html avec les namespaces
 
-![img_8.png](img_8.png)
+![img_8.png](images/img_8.png)
                                                             
                                                        **Operation Read**
 
@@ -61,7 +61,7 @@ Creation de fichier html avec les namespaces
     =>Retounons la liste des patients. Ici nous allons utiliser la pagination. Pour cela on retourne Page et non une liste.
     =>Ajoutons un formulaire pour permettre de faire une recherche à partir de Keyword .Pour cela il faut creer un methode
     le repositories 
-![img_10.png](img_10.png)
+![img_10.png](images/img_10.png)
 
   
 
@@ -71,7 +71,7 @@ action dans le controller
     => pour recuperer les données le controller appel find.. de patientRepository. Ensuite on enregistre ces données
     dans le model avec addAttribute(). et on retourn le nom de la vue.
     =>Pour preciser l'urle de l'action on utilise l'annotation @GetMapping(path="...")
-![img_11.png](img_11.png)
+![img_11.png](images/img_11.png)
 
 
 Vue de patients
@@ -79,31 +79,31 @@ Vue de patients
     =>1-on ajoute le namespace de tymeleaf 
     =>2-Pour utiliser le layout, on ajoute les namespaces et on écrit le code de la page dans un div ayant l'attribut 
     layout:fragment="fragment conncerné"
-![img_12.png](img_12.png)
-![img_24.png](img_24.png)
+![img_12.png](images/img_12.png)
+![img_24.png](images/img_24.png)
     =>on va recuperer les données du model et les afficher dans un tableau ici grace à boostrap
     =>liste de patients
-![img_14.png](img_14.png)
+![img_14.png](images/img_14.png)
 
-![img_16.png](img_16.png)
+![img_16.png](images/img_16.png)
 
 
     =>formulaire de recherche
     on cree un input avec le name keyword et le button submit. Au clique on appel index avec le keyword dans le lien htttp
-![img_13.png](img_13.png)
+![img_13.png](images/img_13.png)
     
     Resultat:
-![img_17.png](img_17.png)
+![img_17.png](images/img_17.png)
 
 
     =>pagination
     Grace à la liste des pages recuperer, pour chaque page on crée un lien .Au clique on appel index. ici on precise 
     on envoie la page avec status .index, la taille size et le keyword.preciser le keyword permet de naviguer dans une 
     recherche. Avec th:class on definit la classe du lien en fonction de la page cliquer
-![img_15.png](img_15.png)
+![img_15.png](images/img_15.png)
 
     resultat:
-![img_18.png](img_18.png)
+![img_18.png](images/img_18.png)
 
 
 
@@ -115,37 +115,37 @@ Vue de patients
     faire une redirection vers la meme page.
 Vue
 
-![img_19.png](img_19.png)
+![img_19.png](images/img_19.png)
 
 methode delete(...)
 
-![img_21.png](img_21.png)
+![img_21.png](images/img_21.png)
 
 Test:
 
-![img_20.png](img_20.png)
-![img_22.png](img_22.png)
+![img_20.png](images/img_20.png)
+![img_22.png](images/img_22.png)
 
     117 est supprimé et on reste sur la meme page
-![img_23.png](img_23.png)
+![img_23.png](images/img_23.png)
 
                     
                                                   **Operation Post**
 
     
     Creation de de lien pour l'ajout dans le menu
-![img_25.png](img_25.png)
+![img_25.png](images/img_25.png)
 
 Controller
 
     on cree un nouveau patient que l'on stocke dans le model et on retourne la vue
-![img_26.png](img_26.png)
+![img_26.png](images/img_26.png)
     
     =>Dans la vue on cree un formulaire contenant un label un input et le span pour le message d'erreur
-![img_27.png](img_27.png)
+![img_27.png](images/img_27.png)
 
     => la method est de type post et appel l'action save du controller
-![img_28.png](img_28.png)
+![img_28.png](images/img_28.png)
 
 Validation du formulaire:
     
@@ -154,24 +154,24 @@ Validation du formulaire:
     @NotEmpty -->no vide
     @DecimalMin("")-->infereir à ..
     @Size(min=, max=)-->taille de string
-![img_29.png](img_29.png)
+![img_29.png](images/img_29.png)
 
     3-En plus dans le controller , on ajoute un argument BindingResult  dans la methode save.il utilisé pour le test 
-![img_31.png](img_31.png)
+![img_31.png](images/img_31.png)
     
     4-ajouter span avec th:errors dans le template
-![img_32.png](img_32.png)
+![img_32.png](images/img_32.png)
 
 Test:
 Non valide
 
-![img_33.png](img_33.png)
+![img_33.png](images/img_33.png)
 
 valide
 
-![img_34.png](img_34.png)
+![img_34.png](images/img_34.png)
 
-![img_35.png](img_35.png)
+![img_35.png](images/img_35.png)
 
 
 
@@ -180,25 +180,25 @@ valide
 Affichage
     
     ajoute d'un lien edit pour chaqur peoduit
-![img_36.png](img_36.png)
+![img_36.png](images/img_36.png)
 
     edit appel l'action edit du controller qui recupère le patient à editer 
     et renvoie la vue edit.hmtl
     j'envoie le keyword et la page pour retouver ma page courante
-![img_38.png](img_38.png)
+![img_38.png](images/img_38.png)
     
     save appel /save du controller qui modifie et retourne la page courante 
-![img_39.png](img_39.png)
+![img_39.png](images/img_39.png)
 
 Test:
 
-![img_40.png](img_40.png)
+![img_40.png](images/img_40.png)
     
     changer le nom
-![img_41.png](img_41.png)
+![img_41.png](images/img_41.png)
 
     resultat:
-![img_42.png](img_42.png)
+![img_42.png](images/img_42.png)
 
                                     
 
@@ -207,14 +207,14 @@ Test:
 //
 
     Pour utiliser Spring security il faut ajouter la depandances
-![img_43.png](img_43.png)
+![img_43.png](images/img_43.png)
 
     Quand on demarre l'application, l'authentification est demmandé.Spring demmare un filtre avant la servlet.
     
     Creons notre propre configuration; il faut creer une classe qui herite WebSecurityConfigurerAdapter. Au dessus de la 
     on ajoute @Configuration pour specifier que c'est un fichier de configuration, @EnableWebSecurity pour dire à spring
     d'activer la securité web. 
-![img_44.png](img_44.png)
+![img_44.png](images/img_44.png)
 
 //
 
@@ -233,69 +233,69 @@ Test:
     passe à la declaration ou utilise << {noop}>> avant mot de passe.
     Ici, je vais utiliser BCrypt
     =>on redfinit la methode config avec l'argument HttpSecurity qui permet de definir le formulaire et gére les droits d'accès
-![img_46.png](img_46.png)
+![img_46.png](images/img_46.png)
     
     Afficher l'utilisateur;
     Pour utiliser spring security avec thymeleaf il ajouter une dependance
-![img_47.png](img_47.png)
+![img_47.png](images/img_47.png)
 
     Ensuite il faut ajouter un namespace dans le fichier html,
-![img_50.png](img_50.png)
+![img_50.png](images/img_50.png)
     
     on peut on maintenant afficher le nom.
-![img_49.png](img_49.png)
+![img_49.png](images/img_49.png)
 
                         Droits d'accès 
 //
 
         Etape:1:Contextualisation -Pour afficher les les fonctionnalités disponible pour les admin on va utilise sec:authorize..
         Ici on prend l'exemple de delete et edit
-![img_51.png](img_51.png)
+![img_51.png](images/img_51.png)
 
 Test:
 
     on se connecte avec un user admin
-![img_52.png](img_52.png)
+![img_52.png](images/img_52.png)
 
     on se connecte avec user1 qui a le role user seulement
     edit et delete n'apparaissent
 
-![img_53.png](img_53.png)
+![img_53.png](images/img_53.png)
 
         Etape 2: l'étape 1 permet de gérer l'affichage mais un user peut toujours supprimer en tapant l'url de suppression
     c'est l'escalation.
     Pour rejoudre cela il faut interdire ces requètes aux autres à part les admin.avec   http.authorizeRequests().antMatchers 
     on gère les liens d'accès.
-![img_54.png](img_54.png)
+![img_54.png](images/img_54.png)
 
 Test:
     
     lorqu'un user essaie d'acceder à un lien admin.on retourne une error 403 .ce qui veut qu'on n'a pas le droit
-![img_55.png](img_55.png)
+![img_55.png](images/img_55.png)
 
     Personnalisons cette page. on créer notre propre page (403.html), vue + action du controller . et dans le fichier 
     de configuration on gère l'exception en appelant cette page
-![img_56.png](img_56.png)
+![img_56.png](images/img_56.png)
 
     SecurrityContoller
-![img_57.png](img_57.png)
+![img_57.png](images/img_57.png)
 
     page 403.html
-![img_58.png](img_58.png)
+![img_58.png](images/img_58.png)
 
 Test:
 
     si on essaye d'acceder à la page du formulaire
-![img_59.png](img_59.png)
+![img_59.png](images/img_59.png)
 
 Page sans authentification
     
     Créons une page home vide.Pour faire la page sans authentification
     il faut utiliser "permitAll();" de htttp.authorizeRequests
-![img_60.png](img_60.png)
+![img_60.png](images/img_60.png)
     
     resultat:
-![img_61.png](img_61.png)
+![img_61.png](images/img_61.png)
 
 
 
@@ -305,7 +305,7 @@ Page sans authentification
 
 //
 
-![img_62.png](img_62.png)
+![img_62.png](images/img_62.png)
 
     Dans le fichier de configuration on utilise jdbcauthentification  avec
     dataSource(dataSource)=> on definie la source de données
@@ -313,7 +313,7 @@ Page sans authentification
     .authoritiesByUsernameQuery=>on recupère les roles
     .rolePrefix=>
     .passwordEncoder(passwordEncoder)=>on precise l'algorithme d'encodage
-![img_63.png](img_63.png)
+![img_63.png](images/img_63.png)
 
     resultat:
-![img_64.png](img_64.png)
+![img_64.png](images/img_64.png)
