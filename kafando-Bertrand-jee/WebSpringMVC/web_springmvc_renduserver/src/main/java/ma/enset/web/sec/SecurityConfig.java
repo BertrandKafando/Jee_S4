@@ -1,5 +1,7 @@
 package ma.enset.web.sec;
 
+import lombok.AllArgsConstructor;
+import ma.enset.web.sec.service.UserDetailsImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,13 +16,16 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
+@AllArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
-    private DataSource dataSource;
 
+    private DataSource dataSource;
+    private UserDetailsImp userDetails;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        PasswordEncoder passwordEncoder=passwordEncoder();
+      //  PasswordEncoder passwordEncoder=passwordEncoder();
        /* auth.inMemoryAuthentication()
                 .withUser("user").password(passwordEncoder.encode("1234")).roles("USER","ADMIN");
         auth.inMemoryAuthentication()
@@ -42,10 +47,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //algorithime
                 .passwordEncoder(passwordEncoder);
 
+*/
 
-
- */
-
+        //User details Service
+        auth.userDetailsService(userDetails);
 
 
     }
@@ -55,17 +60,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
        http.formLogin();
         http.authorizeRequests().antMatchers("/").permitAll();
        http.authorizeRequests().antMatchers("/delete/**","/edit/**",
-               "/save/**","/formPatients/**").hasRole("ADMIN");
-       http.authorizeRequests().antMatchers("/index/**").hasRole("USER");
+               "/save/**","/formPatients/**").hasAuthority("ADMIN");
+       http.authorizeRequests().antMatchers("/index/**").hasAuthority("USER");
        http.authorizeRequests().antMatchers("webjars/**").permitAll();
        http.authorizeRequests().anyRequest().authenticated();
        http.exceptionHandling().accessDeniedPage("/403");
 
     }
 
-    @Bean
-    PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
 
 }

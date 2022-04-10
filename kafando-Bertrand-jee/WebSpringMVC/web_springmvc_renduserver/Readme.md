@@ -301,7 +301,7 @@ Page sans authentification
 
 //
 
-    Cas 2: Les users sont dans la bd
+    Cas 2: jdbc Authentification
 
 //
 
@@ -317,3 +317,41 @@ Page sans authentification
 
     resultat:
 ![img_64.png](images/img_64.png)
+
+
+//
+
+    Cas 3: La securité avec UserDetails Service
+
+//
+ 
+    Création de des entités,repositories et service. il est preférable de les separer de l'application
+    ici, je les mets dans un  package nommé sec .
+Entities
+
+![img.png](img.png)
+
+![img_1.png](img_1.png)
+
+Repositories
+
+![img_2.png](img_2.png)
+
+Creation d'une interface de securité
+
+![img_3.png](img_3.png)
+
+Implementer l'interface UserDetailsService
+
+    Quand le user veut s'authentifier,spring fait appel à la classe qui implemente l'interface UserDetailsService qui 
+    redefinie une methode loadUserByUsername qui grâce l'interface de service de  securité qui interragit avec notre couche 
+    dao charge le user et ses roles. 
+    Les roles sont ensuite mapés en authority et transmi à un objet User de spring avec le username et le password qui
+    les retourne.
+![img_4.png](img_4.png)
+    
+    Dans la méthode reconfigure on appel un objet de la classe qui a implementé Userdetails service
+![img_5.png](img_5.png)
+
+    Avec cette Maniére, il faut utilise hasAuthority au lieu de HasRole pour les droits d'accès
+![img_6.png](img_6.png)
