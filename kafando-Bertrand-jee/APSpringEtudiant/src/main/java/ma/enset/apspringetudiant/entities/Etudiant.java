@@ -18,13 +18,4 @@ public class Etudiant {
     private Genre genre;
     private boolean regle;
 
-    /*
-    - Son id
- - Son nom
- - Son prénom
- - Son email
- - Sa date naissance
- - Son genre : MASCULIN ou FEMININ
- - Un attribut qui indique si il est en règle ou non
-     */
 }

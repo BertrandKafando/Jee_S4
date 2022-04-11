@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>E-School</title>
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/5.1.3/css/bootstrap.min.css">
+    <script src="webjars/bootstrap/5.1.3/js/bootstrap.bundle.js"></script>
+</head>
+<body>
+<!-- navbar-->
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+    <div class="container-fluid">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link active" th:href="@{/index}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Etudiants</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" th:href="@{/formEtudiants}">Nouveau Etudiant</a></li>
+                    <li><a class="dropdown-item" th:href="@{/index}">Chercher</a></li>
+                    <li><a class="dropdown-item" href="#">A third link</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!-- Content-->
+<section layout:fragment="content1">
+
+</section>
+<!-- footer  -->
+
+</body>
+</html>
