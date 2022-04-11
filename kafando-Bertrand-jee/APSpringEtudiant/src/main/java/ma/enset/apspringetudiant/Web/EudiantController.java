@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.yaml.snakeyaml.util.EnumUtils;
 
 /*
 L'application doit offrir les fonctionnalités suivantes :
