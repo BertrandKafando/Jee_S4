@@ -13,7 +13,12 @@
 
     <div class="row-cols-md-6 offset-3">
 
-        <form method="post" th:action="@{save}">
+        <form method="post" th:action="@{saveedit(id=${etudiant.id},
+        keyword=${keyword}, page=${page})}">
+            <div>
+                <label>ID</label>
+                <label th:text="${etudiant.id}"></label>
+            </div>
             <div>
                 <label>Nom</label>
                 <input class="form-control" type="text" name="name" th:value="${etudiant.name}">

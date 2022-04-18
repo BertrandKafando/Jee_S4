@@ -3,11 +3,14 @@ package ma.enset.apspringetudiant;
 import ma.enset.apspringetudiant.entities.Etudiant;
 import ma.enset.apspringetudiant.entities.Genre;
 import ma.enset.apspringetudiant.repositories.EtudiantRepository;
+import ma.enset.apspringetudiant.security.service.SecurityServiceI;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.amqp.RabbitProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Date;
 import java.util.stream.Stream;
@@ -37,5 +40,29 @@ public class ApSpringEtudiantApplication {
 
         };
     }
+
+    @Bean
+    PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+
+   // @Bean
+    CommandLineRunner saisieUsers(SecurityServiceI securityServiceI) {
+        return args -> {
+          securityServiceI.saveNewUser("Bertrand","1234","1234");
+            securityServiceI.saveNewUser("Mohammed","1234","1234");
+            securityServiceI.saveNewUser("Yasmine","1234","1234");
+
+            securityServiceI.saveNewRole("USER","");
+            securityServiceI.saveNewRole("ADMIN","");
+
+            securityServiceI.addRoleToUser("Bertrand", "User");
+            securityServiceI.addRoleToUser("Bertrand", "ADMIN");
+            securityServiceI.addRoleToUser("Mohammed", "User");
+            securityServiceI.addRoleToUser("Yasmine", "User");
+
+        };
+    }
+
 
 }

@@ -7,4 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface EtudiantRepository extends JpaRepository<Etudiant,Long> {
     Page<Etudiant>findByNameContains(String name, Pageable pageable);
+    Page<Etudiant> findEtudiantByRegleTrue(Pageable pageable);
 }

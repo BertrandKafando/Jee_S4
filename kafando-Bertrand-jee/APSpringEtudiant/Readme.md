@@ -63,18 +63,58 @@ Resultat:
 
         **supprimer**
 
+Controller:
+ ![img_3.png](images/img_3.png)
+
+Template:
+![img_6.png](images/img_6.png)
+
+Test:
+![img_4.png](images/img_4.png)
+
+     la page 6 devient vide
+![img_5.png](images/img_5.png)
+
 
         **ajouter**
 
-![img.png](img.png)
+Controller:
 
-![img_1.png](img_1.png)
+    la fonction qui ouvre le formulaire
+![img_7.png](images/img_7.png)
+
+    la fonction save
+![img_8.png](images/img_8.png)
+
+    formulaire 
+![img.png](images/img.png)
 
 
+Test:
+
+     Avec des erreurs
+![img_9.png](images/img_9.png)
+
+     bien remplie
+![img_11.png](images/img_11.png)
+ 
+    resultat
+![img_12.png](images/img_12.png)
 
 
+             **Editer**
 
+Controller:
 
+    la fonction edit ouvre le formulaire de modification et la fonction save enregistre après les modificatiobs
+![img_13.png](images/img_13.png)
+
+Test:
+
+![img_14.png](images/img_14.png)
+
+![img_15.png](images/img_15.png)
+![img_16.png](images/img_16.png)
 
 
 

@@ -1,6 +1,6 @@
-package ma.enset.web.sec.repositories;
+package ma.enset.apspringetudiant.security.repositories;
 
-import ma.enset.web.sec.entities.AppRole;
+import ma.enset.apspringetudiant.security.entities.AppRole;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AppRoleRepository extends JpaRepository<AppRole,Long> {
