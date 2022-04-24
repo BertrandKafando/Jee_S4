@@ -21,12 +21,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
      http.formLogin();
-
-        http.authorizeRequests().antMatchers("/").permitAll();
-        http.authorizeRequests().antMatchers("/delete/**","/edit/**",
-                "/save/**","/formEtudiant/**","/saveedit/**").hasAuthority("ADMIN");
-        http.authorizeRequests().antMatchers("/index/**","/regle/**").hasAuthority("USER");
         http.authorizeRequests().antMatchers("webjars/**").permitAll();
+        http.authorizeRequests().antMatchers("/home").permitAll();
+        http.authorizeRequests().antMatchers("/delete/**","/edit/**",
+                "/save/**","/formEtudiant/**","/saveedit/**","/registration/**").hasAuthority("ADMIN");
+        http.authorizeRequests().antMatchers("/index/**","/regle/**").hasAuthority("USER");
         http.authorizeRequests().anyRequest().authenticated();
         http.exceptionHandling().accessDeniedPage("/403");
 

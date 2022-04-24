@@ -57,7 +57,7 @@ public class EudiantController {
         return "formEtudiant";
     }
 
-    @GetMapping("/")
+    @GetMapping("/home")
     String home(){
         return "home";
     }
