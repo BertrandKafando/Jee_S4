@@ -117,6 +117,31 @@ Test:
 ![img_16.png](images/img_16.png)
 
 
+                                         **Security**
+
+
+//
+
+                 ** Login**
+Controller:
+![img_3.png](img_3.png)
+
+template
+![img.png](img.png)
+
+                 **logout**
+
+![img_2.png](img_2.png)
+
+          
+             **registration**
+Controller
+![img_4.png](img_4.png)
+
+template
+![img_1.png](img_1.png)
+
+
 
 
 

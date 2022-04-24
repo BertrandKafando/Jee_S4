@@ -104,9 +104,5 @@ public class EudiantController {
         return "etudiantsRegle";
     }
 
-    @GetMapping("/log")
-    String logp(){
-        return  "loginpage";
-    }
 
 }
