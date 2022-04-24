@@ -1,8 +1,6 @@
 package ma.enset.apspringetudiant.Web;
 
 import lombok.AllArgsConstructor;
-import ma.enset.apspringetudiant.repositories.EtudiantRepository;
-import ma.enset.apspringetudiant.security.entities.AppRole;
 import ma.enset.apspringetudiant.security.entities.AppUser;
 import ma.enset.apspringetudiant.security.repositories.AppRoleRepository;
 import ma.enset.apspringetudiant.security.repositories.AppUserRepository;
@@ -13,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 import java.util.UUID;
@@ -46,4 +45,10 @@ public class SecurityController {
         appUserRepository.save(user);
         return "registersucess";
     }
+   @RequestMapping("/login")
+    public String loginPage(){
+        return "login"; // retourne la vue loginp.html
+    }
+
+
 }

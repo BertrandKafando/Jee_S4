@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.amqp.RabbitProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -19,6 +20,7 @@ import static ma.enset.apspringetudiant.entities.Genre.Feminin;
 import static ma.enset.apspringetudiant.entities.Genre.Masculin;
 
 @SpringBootApplication
+@ComponentScan({"ma.enset"})
 public class ApSpringEtudiantApplication {
 
     public static void main(String[] args) {

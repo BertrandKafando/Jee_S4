@@ -57,7 +57,7 @@ public class EudiantController {
         return "formEtudiant";
     }
 
-    @GetMapping("/home")
+    @GetMapping("/")
     String home(){
         return "home";
     }
@@ -87,7 +87,7 @@ public class EudiantController {
                        @RequestParam(defaultValue = "")  String keyword){
         if(bindingResult.hasErrors()) return "editEtudiant";
         etudiantRepository.save(etudiant);
-        return "redirect:/index?page="+page+"&keyword="+keyword;
+        return "redirect:/index?page="+page+"&name="+keyword;
     }
 
 
@@ -104,5 +104,9 @@ public class EudiantController {
         return "etudiantsRegle";
     }
 
+    @GetMapping("/log")
+    String logp(){
+        return  "loginpage";
+    }
 
 }
