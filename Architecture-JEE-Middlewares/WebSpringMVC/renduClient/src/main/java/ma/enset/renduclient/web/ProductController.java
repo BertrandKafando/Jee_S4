@@ -30,9 +30,10 @@ public class ProductController {
     }
 
     @PutMapping("/products/{id}")
-    public Product putProduct(@RequestBody Product product,@PathVariable String id){
-        product.setId(id);
-        return productRepository.save(product);
+    public ProductDTO putProduct(@RequestBody ProductDTO productDTO,@PathVariable String id){
+        productDTO.setId(id);
+
+        return    productService.save(productDTO);
     }
 
     @DeleteMapping("/products/{id}")

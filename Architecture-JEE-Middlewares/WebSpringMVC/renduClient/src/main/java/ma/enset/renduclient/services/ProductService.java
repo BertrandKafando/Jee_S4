@@ -8,4 +8,5 @@ public interface ProductService {
 
     public ProductDTO save(ProductDTO productDTO);
     public List<ProductDTO>products();
+    public  void delete(ProductDTO productDTO);
 }

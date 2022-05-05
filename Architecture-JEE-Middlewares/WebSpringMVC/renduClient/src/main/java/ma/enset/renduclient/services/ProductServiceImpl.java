@@ -38,4 +38,10 @@ public class ProductServiceImpl implements ProductService {
 
         return productDTOS;
     }
+
+    @Override
+    public void delete(ProductDTO productDTO) {
+        Product product=catalogMappers.fromProductDTO(productDTO);
+        productRepository.delete(product);
+    }
 }
