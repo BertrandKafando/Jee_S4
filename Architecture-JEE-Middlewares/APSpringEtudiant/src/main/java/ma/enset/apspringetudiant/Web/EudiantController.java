@@ -25,7 +25,7 @@ L'application doit offrir les fonctionnalités suivantes :
  - Ajouter d'autres fonctionnalités supplémentaires
  */
 
-@Controller
+//@Controller
 @AllArgsConstructor
 public class EudiantController {
     EtudiantRepository etudiantRepository;
@@ -103,6 +103,5 @@ public class EudiantController {
         model.addAttribute("curentPage",page);
         return "etudiantsRegle";
     }
-
 
 }

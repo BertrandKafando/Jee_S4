@@ -27,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/delete/**","/edit/**",
                 "/save/**","/formEtudiant/**","/saveedit/**","/registration/**").hasAuthority("ADMIN");
         http.authorizeRequests().antMatchers("/index/**","/regle/**").hasAuthority("USER");
-        http.authorizeRequests().anyRequest().authenticated();
+        //http.authorizeRequests().anyRequest().authenticated();
         http.exceptionHandling().accessDeniedPage("/403");
         http.logout()
         .logoutRequestMatcher(new AntPathRequestMatcher("/logout","GET"));
