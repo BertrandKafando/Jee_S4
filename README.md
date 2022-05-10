@@ -1,13 +1,17 @@
-A Repository to sum up the technical and practical activities related to courses taken in JEE @ENSET-media
+A Repository to sum up the technical and practical activities related to courses taken in JEE @ENSET
 
 This repository will treat:
 
-    Inversion of control & injection of dependencies
+         Inversion of control & injection of dependencies
          JEE & achitecture
-         Micro Services & distrubuted systems
          Framework SPRING
-         Hibernate ORM JPA
-         Jax Binding OXM JaxB
+               Spring Data Jpa
+               Spring MVC 
+               DTO && Mappers 
+               Spring Security (Stateless && Stateful)
+            
+           
+       Framework Angular 
 
     
     
