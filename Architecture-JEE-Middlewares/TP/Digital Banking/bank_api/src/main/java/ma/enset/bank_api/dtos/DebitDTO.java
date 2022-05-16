@@ -1,2 +1,10 @@
-package ma.enset.bank_api.dtos;public class DebitDTO {
+package ma.enset.bank_api.dtos;
+
+import lombok.Data;
+
+@Data
+public class DebitDTO {
+    private String accountId;
+    private double amount;
+    private  String description;
 }

@@ -1,2 +1,10 @@
-package ma.enset.bank_api.dtos;public class TransfertDTO {
+package ma.enset.bank_api.dtos;
+
+import lombok.Data;
+
+@Data
+public class TransferRequestDTO {
+   private String accountSource;
+    private String accountDestination;
+     private double amount;
 }

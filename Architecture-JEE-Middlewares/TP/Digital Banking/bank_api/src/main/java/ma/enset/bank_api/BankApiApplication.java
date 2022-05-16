@@ -1,14 +1,19 @@
 package ma.enset.bank_api;
 
-import ma.enset.bank_api.entities.AccountOperation;
-import ma.enset.bank_api.entities.CurrentAccount;
-import ma.enset.bank_api.entities.Customer;
-import ma.enset.bank_api.entities.SavingAccount;
+import ma.enset.bank_api.dtos.BankAccountDto;
+import ma.enset.bank_api.dtos.CurrentAccountDto;
+import ma.enset.bank_api.dtos.CustomerDto;
+import ma.enset.bank_api.dtos.SavingAccountDto;
+import ma.enset.bank_api.entities.*;
 import ma.enset.bank_api.enums.AccountStatus;
 import ma.enset.bank_api.enums.OperationType;
+import ma.enset.bank_api.exceptions.BalanceNotSufficientException;
+import ma.enset.bank_api.exceptions.BankAccountNotFoundException;
+import ma.enset.bank_api.exceptions.CustomerNotFoundException;
 import ma.enset.bank_api.repositories.AccountOperationRepository;
 import ma.enset.bank_api.repositories.BankAccountRepository;
 import ma.enset.bank_api.repositories.CustomerRepository;
+import ma.enset.bank_api.services.BankAccountService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -26,6 +31,53 @@ public class BankApiApplication {
 	}
 
 	@Bean
+			CommandLineRunner commandLineRunner(BankAccountService bankAccountService){
+			return  args -> {
+				Stream.of("toto","Hassan","cecile").forEach(
+						cus->{
+							CustomerDto customer= new CustomerDto();
+							customer.setName(cus);
+							customer.setEmail(cus+"@gmail.com");
+							bankAccountService.saveCustomer(customer);
+						}
+				);
+				bankAccountService.listCustomers().forEach(
+						cust->{
+							try {
+								bankAccountService.saveCurrentBankAccount(Math.random()*90000,9000, cust.getId());
+								bankAccountService.saveSavingBankAccount(Math.random()*120000,5.5, cust.getId());
+
+
+
+							} catch (CustomerNotFoundException e) {
+								throw new RuntimeException(e);
+							}
+
+						}
+				);
+
+
+				for(BankAccountDto bankAccount:  bankAccountService.bankAccountList())
+					for(int i=0;i<10;i++){
+						String accounId;
+						if(bankAccount instanceof SavingAccountDto){
+							accounId=((SavingAccountDto) bankAccount).getId();
+						}
+						else accounId=((CurrentAccountDto) bankAccount).getId();
+
+						bankAccountService.credit(accounId, 10000+Math.random()*120000,"Credit");
+						bankAccountService.debit(accounId , 1000+Math.random()*9000,"Debit");
+					}
+
+
+
+
+			};
+
+	}
+
+
+	//@Bean
 	CommandLineRunner commandLineRunner(CustomerRepository customerRepository,
 							BankAccountRepository bankAccountRepository,
 										AccountOperationRepository accountOperationRepository
