@@ -1,0 +1,43 @@
+<div class="container mt-3">
+  <div class="card">
+    <div class="card-header">Listes Des Clients</div>
+    <div class="card-body">
+      <ng-container *ngIf="customer$|async as result" [ngSwitch]="result.dataState">
+
+        <ng-container *ngSwitchCase="DataStateEnum.LOADING">
+          LOADING...
+        </ng-container>
+
+        <ng-container *ngSwitchCase="DataStateEnum.LOADED">
+          <div class="container" *ngIf="result.data">
+            <table class="table">
+              <thead>
+              <th></th>
+              <th>name</th>
+              <th>email</th>
+              </thead>
+              <tbody>
+              <tr *ngFor="let p of result.data">
+                <td>{{p.id}}</td>
+                <td>{{p.name}}</td>
+                <td>{{p.email}}</td>
+              </tr>
+              </tbody>
+            </table>
+
+          </div>
+
+        </ng-container>
+
+        <ng-container *ngSwitchCase="DataStateEnum.ERROR">
+          Error...
+          <div class="alert-danger">
+            {{result.errorMessage}}
+          </div>
+        </ng-container>
+
+      </ng-container>
+    </div>
+  </div>
+
+</div>
