@@ -1,7 +1,24 @@
 <div class="container mt-3">
   <div class="card">
-    <div class="card-header">Listes Des Clients</div>
+    <div class="card-header">
+      Listes Des Clients
+
+    </div>
     <div class="card-body">
+      <div *ngIf="frormGroup">
+          <form  [formGroup]="frormGroup" (ngSubmit)="handleSearchCustomers()" >
+            <div class="input-group">
+              <label class="input-group-text">Keyword:</label>
+              <input type="text" formControlName="keyword" class="form-control">
+              <button class="btn btn-info">
+                <i class="bi bi-search"> </i>
+              </button>
+            </div>
+
+          </form>
+      </div>
+
+
       <ng-container *ngIf="customer$|async as result" [ngSwitch]="result.dataState">
 
         <ng-container *ngSwitchCase="DataStateEnum.LOADING">
@@ -21,6 +38,11 @@
                 <td>{{p.id}}</td>
                 <td>{{p.name}}</td>
                 <td>{{p.email}}</td>
+                <td >
+                  <button (click)="handledeletecustomer(p)" class="btn btn-danger">
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </td>
               </tr>
               </tbody>
             </table>

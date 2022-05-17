@@ -8,6 +8,8 @@ import { CustomersComponent } from './components/customers/customers.component';
 import { AccountsComponent } from './components/accounts/accounts.component';
 import {HttpClientModule} from "@angular/common/http";
 import {CustomerService} from "./Services/customer.service";
+import {ReactiveFormsModule} from "@angular/forms";
+import { NewCustomerComponent } from './components/new-customer/new-customer.component';
 
 
 @NgModule({
@@ -16,11 +18,13 @@ import {CustomerService} from "./Services/customer.service";
     NavbarComponent,
     CustomersComponent,
     AccountsComponent,
+    NewCustomerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [CustomerService],
   bootstrap: [AppComponent]
