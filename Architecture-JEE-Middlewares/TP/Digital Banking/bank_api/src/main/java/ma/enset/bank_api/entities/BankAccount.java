@@ -22,7 +22,6 @@ public  class BankAccount {
 
     @ManyToOne()
     private  Customer customer;
-
    @OneToMany(mappedBy = "bankAccount")
     private List<AccountOperation> accountOperations;
 }
