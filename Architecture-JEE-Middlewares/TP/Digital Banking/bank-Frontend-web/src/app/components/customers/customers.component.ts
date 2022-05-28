@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {CustomerService} from "../../Services/customer.service";
 import {catchError, map, Observable, of, startWith} from "rxjs";
 import {AppDataState, DataStateEnum} from "../../data.state";
-import { Customer } from '../Model/customers.model';
+import { Customer } from '../../Model/customers.model';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
+import {state} from "@angular/animations";
 
 @Component({
   selector: 'app-customers',
@@ -14,7 +16,7 @@ export class CustomersComponent implements OnInit {
   customer$!:Observable<AppDataState<Customer[]>>
   readonly DataStateEnum=DataStateEnum;
   frormGroup!:FormGroup
-  constructor(private fb:FormBuilder,private customerService:CustomerService) { }
+  constructor(private router:Router, private fb:FormBuilder,private customerService:CustomerService) { }
 
   ngOnInit(): void {
 
@@ -70,5 +72,9 @@ export class CustomersComponent implements OnInit {
           }
         }
       );
+  }
+
+  handledeletecustomerAccounts(p: Customer) {
+    this.router.navigateByUrl("/customer-accounts/"+p.id,{state:p})
   }
 }
