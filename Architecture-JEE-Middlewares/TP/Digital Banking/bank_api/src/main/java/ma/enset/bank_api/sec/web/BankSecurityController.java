@@ -11,10 +11,6 @@ import ma.enset.bank_api.sec.entities.AppUser;
 import ma.enset.bank_api.sec.entities.RoleUserForm;
 import ma.enset.bank_api.sec.service.SecurityServiceI;
 import org.springframework.security.access.prepost.PostAuthorize;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -90,4 +87,10 @@ public class BankSecurityController {
 
 
 }
+
+    @GetMapping("/profile")
+    public AppUser profile(Principal principal){
+        return securityServiceI.loadUserByUsername(principal.getName());
+
+    }
     }

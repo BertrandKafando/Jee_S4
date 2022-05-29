@@ -5,6 +5,7 @@ import ma.enset.bank_api.dtos.*;
 import ma.enset.bank_api.exceptions.BalanceNotSufficientException;
 import ma.enset.bank_api.exceptions.BankAccountNotFoundException;
 import ma.enset.bank_api.mappers.BankAccountMaperImpl;
+import ma.enset.bank_api.sec.entities.AppUser;
 import ma.enset.bank_api.services.BankAccountService;
 import org.springframework.web.bind.annotation.*;
 
@@ -58,4 +59,6 @@ public class BankAccountRestAPI {
                 transferRequestDTO.getAccountDestination(),
                 transferRequestDTO.getAmount());
     }
+
+
 }
