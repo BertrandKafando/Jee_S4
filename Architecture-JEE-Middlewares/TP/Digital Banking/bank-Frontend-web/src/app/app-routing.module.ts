@@ -5,6 +5,7 @@ import {AccountsComponent} from "./components/accounts/accounts.component";
 import {NewCustomerComponent} from "./components/new-customer/new-customer.component";
 import {CustomerAccountsComponent} from "./components/customer-accounts/customer-accounts.component";
 import {HomeComponent} from "./components/home/home.component";
+import {LoginComponent} from "./components/auth/login/login.component";
 
 
 
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path:"accounts",component:AccountsComponent},
   {path:"new-customer",component:NewCustomerComponent},
   {path:"home",component:HomeComponent},
+  {path:"login",component:LoginComponent},
   {path:"customer-accounts/:id",component:CustomerAccountsComponent},
 ];
 

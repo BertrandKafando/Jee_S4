@@ -12,6 +12,8 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { NewCustomerComponent } from './components/new-customer/new-customer.component';
 import { CustomerAccountsComponent } from './components/customer-accounts/customer-accounts.component';
 import { HomeComponent } from './components/home/home.component';
+import {LoginComponent} from "./components/auth/login/login.component";
+
 
 
 
@@ -25,6 +27,7 @@ import { HomeComponent } from './components/home/home.component';
     NewCustomerComponent,
     CustomerAccountsComponent,
     HomeComponent,
+    LoginComponent,
 
 
   ],
