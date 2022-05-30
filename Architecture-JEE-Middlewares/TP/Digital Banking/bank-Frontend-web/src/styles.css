@@ -237,7 +237,7 @@
 --------------------------------------------------------------*/
 #hero {
   width: 100%;
-  background-image: url("/img/hero-bg.png");
+  background-image: url("src/assets/img/hero-bg.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: right top;

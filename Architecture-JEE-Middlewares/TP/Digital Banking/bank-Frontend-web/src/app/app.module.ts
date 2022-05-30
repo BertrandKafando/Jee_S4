@@ -6,13 +6,14 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CustomersComponent } from './components/customers/customers.component';
 import { AccountsComponent } from './components/accounts/accounts.component';
-import {HttpClientModule} from "@angular/common/http";
 import {CustomerService} from "./Services/customer.service";
 import {ReactiveFormsModule} from "@angular/forms";
 import { NewCustomerComponent } from './components/new-customer/new-customer.component';
 import { CustomerAccountsComponent } from './components/customer-accounts/customer-accounts.component';
 import { HomeComponent } from './components/home/home.component';
 import {LoginComponent} from "./components/auth/login/login.component";
+import {InterceptorService, TokenInterceptorProvider} from "./Services/auth/interceptor.service";
+import {HttpClientModule} from "@angular/common/http";
 
 
 
@@ -30,14 +31,20 @@ import {LoginComponent} from "./components/auth/login/login.component";
     LoginComponent,
 
 
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+
   ],
-  providers: [CustomerService],
+  providers: [
+    InterceptorService,
+    TokenInterceptorProvider,
+    CustomerService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
