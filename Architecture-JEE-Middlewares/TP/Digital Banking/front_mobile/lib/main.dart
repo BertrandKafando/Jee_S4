@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:front_mobile/Repositories/customerRep.dart';
+import 'package:front_mobile/UI/pages/Customer_page.dart';
+import 'package:front_mobile/bloc/customer_bloc.dart';
 
+import 'UI/pages/home_page.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -13,8 +18,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context)=>ContactBloc(new ContactState(requested: Requested.NONE, contacts: [], errorMessage: ''), new ContactRepository())),
-        BlocProvider(create: (context)=>MessageBloc(initialState: new MessageState(messages: [],currentEvent: ContactMessage(contact: Contact())  ), messageRepository: new MessageRepository()),)
+        BlocProvider(create: (context)=>CustomerBloc(new CustomerState(requested: Requested.NONE, customers: [], errorMessage: ''), new CustomerRepository())),
+
       ],
       child: MaterialApp(
         theme: ThemeData(
@@ -22,9 +27,9 @@ class MyApp extends StatelessWidget {
         ),
         routes: {
           "/":(context)=>Home(),
-          "/contacts": (context) => ContactPage(),
-          "/message":(context)=>MessagePage(),
+          "/customers": (context) => CustomerPage(),
         },
+        initialRoute: "/customers",
       ),
 
     );

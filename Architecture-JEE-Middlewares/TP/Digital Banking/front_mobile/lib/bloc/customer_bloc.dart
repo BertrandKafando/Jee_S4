@@ -10,8 +10,8 @@ part 'customer_state.dart';
 
 class CustomerBloc extends Bloc<CustomerEvent, CustomerState> {
   CustomerRepository customerRepository;
-  CustomerBloc(CustomerBloc customerBloc, this.customerRepository) : super(CustomerInitial(customers: [], errorMessage: '', requested: Requested.Loading)) {
-    on<CustomerEvent>((event, emit) {
+  CustomerBloc(CustomerState customerState, this.customerRepository) : super(CustomerInitial(customers: [], errorMessage: '', requested: Requested.Loading)) {
+    on<CustomerEvent>((event, emit) async {
        if (event is ListCustomerEvent ){
          try {
            emit(CustomerState(

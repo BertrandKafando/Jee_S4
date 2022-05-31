@@ -13,10 +13,12 @@ class CustomerRepository{
       customers= json.decode(response.body);
       return customers;
 
-    }).catchError((onError){
+    })
+        .catchError((onError){
       print(onError);
       throw Exception(onError);
     });
+    return customers;
   }
 
 
