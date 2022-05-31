@@ -6,15 +6,13 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import ma.enset.bank_api.sec.entities.AppRole;
 import ma.enset.bank_api.sec.entities.AppUser;
 import ma.enset.bank_api.sec.entities.RoleUserForm;
 import ma.enset.bank_api.sec.service.SecurityServiceI;
 import org.springframework.security.access.prepost.PostAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,6 +23,8 @@ import java.util.stream.Collectors;
 
 @RestController
 @AllArgsConstructor
+@Slf4j
+@CrossOrigin("*")
 public class BankSecurityController {
     private SecurityServiceI securityServiceI;
     @PostAuthorize("hasAuthority('USER')")

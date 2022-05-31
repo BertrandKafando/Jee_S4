@@ -1,6 +1,7 @@
 package ma.enset.bank_api.services;
 
 import ma.enset.bank_api.dtos.*;
+import ma.enset.bank_api.entities.BankAccount;
 import ma.enset.bank_api.exceptions.BalanceNotSufficientException;
 import ma.enset.bank_api.exceptions.BankAccountNotFoundException;
 import ma.enset.bank_api.exceptions.CustomerNotFoundException;
@@ -23,4 +24,6 @@ void transfer(String accountIdsource,String accountIdDestination, double amount)
     List<AccountOperationDto>accountsHistory(String accountId);
     AccountHistoryDto getaccountsHistory(String accountId, int page, int size) throws BankAccountNotFoundException;
     List<CustomerDto> searchCustomers(String s);
+
+    List<BankAccountDto>getcustomerAccount(Long Id ) throws CustomerNotFoundException;
 }

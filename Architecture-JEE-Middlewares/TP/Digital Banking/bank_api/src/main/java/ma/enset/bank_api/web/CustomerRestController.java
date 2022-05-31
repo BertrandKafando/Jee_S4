@@ -2,13 +2,14 @@ package ma.enset.bank_api.web;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import ma.enset.bank_api.dtos.BankAccountDto;
 import ma.enset.bank_api.dtos.CustomerDto;
-import ma.enset.bank_api.entities.Customer;
+
 import ma.enset.bank_api.exceptions.CustomerNotFoundException;
 import ma.enset.bank_api.services.BankAccountService;
+import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.plaf.PanelUI;
 import java.util.List;
 
 @RestController
@@ -26,10 +27,12 @@ public class CustomerRestController {
     public CustomerDto getCustomer(@PathVariable(name = "id") Long customerId) throws CustomerNotFoundException {
         return  bankAccountService.getcustomer(customerId);
     }
+    @PostAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/customers/search")
     public List<CustomerDto> searchCustomers(@RequestParam(name = "keyword",defaultValue = "") String keyword){
         return bankAccountService.searchCustomers("%"+keyword+"%");
     }
+    @PostAuthorize("hasAuthority('ADMIN')")
     @PostMapping("/customers")
     public CustomerDto saveCustomer(@RequestBody CustomerDto customerDto){
        CustomerDto customerDto1=  bankAccountService.saveCustomer(customerDto);
@@ -47,5 +50,10 @@ public class CustomerRestController {
         bankAccountService.deleteCustomer(id);
     }
 
+
+    @GetMapping("/customers/{id}/bankAccounts")
+    public List<BankAccountDto> getCustomerAccounts(@PathVariable(name = "id") Long customerId) throws CustomerNotFoundException {
+        return  bankAccountService.getcustomerAccount(customerId);
+    }
 
 }

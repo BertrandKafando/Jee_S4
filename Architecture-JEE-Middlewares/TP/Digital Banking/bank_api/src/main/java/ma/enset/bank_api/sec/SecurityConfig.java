@@ -7,9 +7,7 @@ import ma.enset.bank_api.sec.service.UserDetailsImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -39,8 +37,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
       http.csrf().disable();
       http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
       http.headers().frameOptions().disable();
+        http.authorizeHttpRequests().antMatchers("/login/**",
+                "/swagger-ui**",
+                "/swagger-ui/**",
+                "/v3/**").permitAll();
       http.addFilter(new JWTAuthentificationFilter(authenticationManagerBean()));
-      http.authorizeRequests().antMatchers("/refreshToken/**","/login/**").permitAll();
+      http.authorizeRequests().antMatchers("/refreshToken/**","/accounts/**","/swagger-ui/**").permitAll();
       http.addFilterBefore(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
         http.authorizeRequests().anyRequest().authenticated();
     }

@@ -57,8 +57,8 @@ public class JWTAuthentificationFilter extends UsernamePasswordAuthenticationFil
         //envoie dans header
 
         Map<String,String>idToken=new HashMap<>();
-        idToken.put("acess-token",jwtacessToken);
-        idToken.put("refress-token",jwtacessRefreshToken);
+        idToken.put("access_token",jwtacessToken);
+        idToken.put("refresh_token",jwtacessRefreshToken);
         response.setContentType("application/json");
         new ObjectMapper().writeValue(response.getOutputStream(),idToken);
     }
