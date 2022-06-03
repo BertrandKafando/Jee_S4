@@ -1,8 +1,14 @@
 class Customer{
- String id;
+int id;
 String name;
 String email;
 
-Customer({required this.id,required this.name,required this.email});
+
+Customer(this.id,this.name, this.email);
+
+ factory Customer.fromJson(dynamic json) {
+  return Customer(json['id'] as int, json['name'] as String,json['email'] as String);
+ }
+ 
 
 }

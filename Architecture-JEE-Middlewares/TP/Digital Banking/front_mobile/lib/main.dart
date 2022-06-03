@@ -26,7 +26,6 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.deepOrange
         ),
         routes: {
-          "/":(context)=>Home(),
           "/customers": (context) => CustomerPage(),
         },
         initialRoute: "/customers",

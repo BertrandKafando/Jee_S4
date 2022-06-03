@@ -16,8 +16,9 @@ class CustomerBloc extends Bloc<CustomerEvent, CustomerState> {
          try {
            emit(CustomerState(
                customers: [], errorMessage: '', requested: Requested.Loading));
-           List<Customer> contacts = await customerRepository.getallCustomers();
-           emit(CustomerState(
+           List<Customer>contacts = await customerRepository.getallCustomers();
+           print(contacts);
+          emit(CustomerState(
                customers: contacts,
                errorMessage: '',
                requested: Requested.Loaded));
