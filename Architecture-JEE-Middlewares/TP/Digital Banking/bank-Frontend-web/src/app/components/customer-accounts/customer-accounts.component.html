@@ -1,6 +1,63 @@
-<main id="hero">
-<div class="container">
 
-  {{customer|json}}
-</div>
+
+<main id="hero">
+  <div class="container">
+
+    {{customer|json}}
+    <div class="card">
+      <div class="card-header">
+        Listes Des Comptes
+
+        <ng-container *ngIf="accounts$|async as result" [ngSwitch]="result.dataState">
+          <ng-container *ngSwitchCase="DataStateEnum.LOADING">
+            LOADING...
+          </ng-container>
+
+          <ng-container *ngSwitchCase="DataStateEnum.LOADED">
+            <div class="container" *ngIf="result.data">
+              <table class="table">
+                <thead>
+                <th></th>
+                <th>name</th>
+                <th>email</th>
+                </thead>
+                <tbody>
+                <tr *ngFor="let p of result.data">
+                  <td>{{p.id}}</td>
+                  <td>{{p.balance}}</td>
+                  <td>{{p.customer.name}}</td>
+                  <!--
+                  <td >
+                    <button (click)="handledeletecustomer(p)" class="btn btn-danger">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </td>
+                    -->
+                  <td >
+                    <button (click)="handledeletecustomerAccounts( p)" class="btn btn-success">
+                      Accounts
+                    </button>
+                  </td>
+
+                </tr>
+
+                </tbody>
+              </table>
+
+            </div>
+
+          </ng-container>
+
+          <ng-container *ngSwitchCase="DataStateEnum.ERROR">
+            Error...
+            <div class="alert-danger">
+              {{result.errorMessage}}
+            </div>
+          </ng-container>
+
+        </ng-container>
+      </div>
+    </div>
+
+  </div>
 </main>

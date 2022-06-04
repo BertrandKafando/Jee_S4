@@ -6,12 +6,14 @@ import {NewCustomerComponent} from "./components/new-customer/new-customer.compo
 import {CustomerAccountsComponent} from "./components/customer-accounts/customer-accounts.component";
 import {HomeComponent} from "./components/home/home.component";
 import {LoginComponent} from "./components/auth/login/login.component";
+import {AccountShowComponent} from "./components/account-show/account-show.component";
 
 
 
 const routes: Routes = [
   {path:"customers",component:CustomersComponent},
   {path:"accounts",component:AccountsComponent},
+  {path:"accounts-show/:id",component:AccountShowComponent},
   {path:"new-customer",component:NewCustomerComponent},
   {path:"home",component:HomeComponent},
   {path:"login",component:LoginComponent},

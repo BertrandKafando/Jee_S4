@@ -14,6 +14,7 @@ import { HomeComponent } from './components/home/home.component';
 import {LoginComponent} from "./components/auth/login/login.component";
 import {InterceptorService, TokenInterceptorProvider} from "./Services/auth/interceptor.service";
 import {HttpClientModule} from "@angular/common/http";
+import { AccountShowComponent } from './components/account-show/account-show.component';
 
 
 
@@ -29,6 +30,7 @@ import {HttpClientModule} from "@angular/common/http";
     CustomerAccountsComponent,
     HomeComponent,
     LoginComponent,
+    AccountShowComponent,
 
 
 

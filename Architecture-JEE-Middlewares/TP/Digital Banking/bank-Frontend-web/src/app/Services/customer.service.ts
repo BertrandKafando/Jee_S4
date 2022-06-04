@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {environment} from "../../environments/environment";
 import {Customer} from "../Model/customers.model";
+import { Account } from '../Model/account.customer';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +30,10 @@ export class CustomerService {
   public deleteCustomer(cutomer:Customer):Observable<Customer>{
     return  this.http.delete<Customer>(environment.host+"/customers/"+cutomer.id);
   }
+
+  public getcustomersAccounts(customer:Customer):Observable<Array<Account>>{
+
+    return this.http.get <Account[]>(environment.host+"/customers/"+customer.id+"/bankAccounts")
+}
 
 }
