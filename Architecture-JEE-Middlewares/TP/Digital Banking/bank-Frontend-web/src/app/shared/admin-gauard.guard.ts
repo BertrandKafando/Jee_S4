@@ -18,7 +18,7 @@ export class AdminGauardGuard implements CanActivate {
     let yesRno = this.securityService.user?.roles.find( e=>e.roleName=="ADMIN")!=undefined;
 
     if (!yesRno) {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/login']);
       return false;
     }
 

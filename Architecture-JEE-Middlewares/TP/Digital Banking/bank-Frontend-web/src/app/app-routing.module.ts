@@ -7,14 +7,16 @@ import {CustomerAccountsComponent} from "./components/customer-accounts/customer
 import {HomeComponent} from "./components/home/home.component";
 import {LoginComponent} from "./components/auth/login/login.component";
 import {AccountShowComponent} from "./components/account-show/account-show.component";
+import {AuthGuard} from "./shared/auth.guard";
+import {AdminGauardGuard} from "./shared/admin-gauard.guard";
 
 
 
 const routes: Routes = [
-  {path:"customers",component:CustomersComponent},
-  {path:"accounts",component:AccountsComponent},
+  {path:"customers",component:CustomersComponent, canActivate: [ AuthGuard]},
+  {path:"accounts",component:AccountsComponent, canActivate: [ AuthGuard]},
   {path:"accounts-show/:id",component:AccountShowComponent},
-  {path:"new-customer",component:NewCustomerComponent},
+  {path:"new-customer",component:NewCustomerComponent,canActivate:[AuthGuard]},
   {path:"home",component:HomeComponent},
   {path:"login",component:LoginComponent},
   {path:"customer-accounts/:id",component:CustomerAccountsComponent},

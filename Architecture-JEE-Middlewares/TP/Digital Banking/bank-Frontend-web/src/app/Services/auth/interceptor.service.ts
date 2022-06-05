@@ -23,6 +23,7 @@ export class InterceptorService implements HttpInterceptor{
     return next.handle(req).pipe(
       catchError((err) => {
         const error = err.error.message || err.statusText;
+
         return throwError(() => new Error(error));
       })
     )
