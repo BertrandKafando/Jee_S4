@@ -37,7 +37,7 @@ return customers;
 */
 
   Future<List<Customer>>  getallCustomers() async {
-    final response=await  http.get(Uri.parse("http://10.0.2.2:8084/customers"));
+    final response=await  http.get(Uri.parse("http://10.0.2.2:8085/customers"));
     if (response.statusCode == 200) {
       // If the server did return a 200 OK response,
       // then parse the JSON.

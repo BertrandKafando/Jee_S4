@@ -43,8 +43,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/v3/**").permitAll();
       http.addFilter(new JWTAuthentificationFilter(authenticationManagerBean()));
       http.authorizeRequests().antMatchers("/refreshToken/**","/accounts/**","/swagger-ui/**").permitAll();
-      http.addFilterBefore(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
         http.authorizeRequests().anyRequest().authenticated();
+      http.addFilterBefore(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
+
     }
 
     @Bean
